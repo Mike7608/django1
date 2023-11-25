@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load mediapath %}
+{% for object in objects_list %}
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h6>Код продукции: {{object.id}}</h6>
+        <h1 class="display-5 fw-bold">{{object.name}}</h1>
+        <p class="col-md-8 fs-4">Категория: {{object.category}}</p>
+          <p class="col-md-8 fs-0">Описание: {{object.description}}</p>
+          <div>
+              {% if object.pict %}
+                <<img src="{% mediapath object.pict %}" style="max-height:400px">>
+              {% endif %}
+          </div>
+          <p></p>
+          <p class="col-md-8 fs-4">Цена: {{object.price}}</p>
+
+        <button class="btn btn-primary btn-sm" type="button">В корзину</button>
+      </div>
+</div>
+{% endfor %}
+{% endblock %}
