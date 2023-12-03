@@ -1,1 +1,107 @@
-[{"model": "catalog.category", "pk": 1, "fields": {"name": "Телевизоры", "description": ""}}, {"model": "catalog.category", "pk": 2, "fields": {"name": "Смартфоны", "description": "Устройство, объединяющее в себе функции персонального органайзера и мобильного телефона; смарт-телефон"}}, {"model": "catalog.category", "pk": 3, "fields": {"name": "Стиральные Машины Автоматические", "description": "Современные стиральные машины полного автоматического цикла"}}, {"model": "catalog.category", "pk": 4, "fields": {"name": "Холодильники бытовые", "description": ""}}, {"model": "catalog.product", "pk": 25, "fields": {"name": "Телевизор LG 65NANO766QA", "description": "Тип экрана:  NanoCell\r\nSmart TV: Да\r\nОперационная система:  WebOS\r\nДиагональ: 65 дюймов\r\nРазрешение:  Ultra HD 4K-3840x2160 пикс.\r\nТип подсветки экрана:  Direct LED", "pict": "", "category": 1, "price": "2199.00", "date_create": "2023-11-16T13:04:49Z", "date_edit": "2023-11-16T13:04:50Z"}}, {"model": "catalog.product", "pk": 26, "fields": {"name": "Стиральная машина LG F2J6HSDW", "description": "Тип мотора:  Инверторный;\r\nВес загрузки белья:  7 кг;\r\nКласс энергопотребления:  A;\r\nСкорость отжима до:  1200 об/мин;\r\nКоличество программ стирки:  14;\r\nОбработка паром;", "pict": "image/LG_F2J6HSDW.jpg", "category": 3, "price": "1300.00", "date_create": "2023-11-16T13:01:43Z", "date_edit": "2023-11-16T13:01:58Z"}}, {"model": "catalog.product", "pk": 27, "fields": {"name": "Холодильник LG DoorCooling+ GA-B509CMTL", "description": "No Frost:  Полный\r\nПолезный объем:  384 л, (277 л + 107 л)\r\nЗона свежести: Да\r\nЦвет:  Серебристый\r\nТип управления:  Электронное\r\nКласс энергопотребления:  A+", "pict": "image/LG_ga-b509cmtl.jpg", "category": 4, "price": "2349.00", "date_create": "2023-11-17T16:59:21Z", "date_edit": "2023-11-17T16:59:23Z"}}]
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Телевизоры",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Смартфоны",
+      "description": "Устройство, объединяющее в себе функции персонального органайзера и мобильного телефона; смарт-телефон"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Стиральные Машины Автоматические",
+      "description": "Современные стиральные машины полного автоматического цикла"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Холодильники бытовые",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 14,
+    "fields": {
+      "name": "Мониторы",
+      "description": "Экраны для офисной техники"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 31,
+    "fields": {
+      "name": "Телевизор LG 65NANO766QA",
+      "description": "Тип экрана:  NanoCell\r\nSmart TV: Да\r\nОперационная система:  WebOS\r\nДиагональ: 65 дюймов\r\nРазрешение:  Ultra HD 4K-3840x2160 пикс.\r\nТип подсветки экрана:  Direct LED",
+      "pict": "image/LG_65ur78009ll.jpeg",
+      "category": 1,
+      "price": "2199.00",
+      "date_create": "2023-11-16T13:04:49Z",
+      "date_edit": "2023-11-16T13:04:50Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 32,
+    "fields": {
+      "name": "Стиральная машина LG F2J6HSDW",
+      "description": "Тип мотора:  Инверторный;\r\nВес загрузки белья:  7 кг;\r\nКласс энергопотребления:  A;\r\nСкорость отжима до:  1200 об/мин;\r\nКоличество программ стирки:  14;\r\nОбработка паром;",
+      "pict": "image/LG_F2J6HSDW.jpg",
+      "category": 3,
+      "price": "1300.00",
+      "date_create": "2023-11-16T13:01:43Z",
+      "date_edit": "2023-11-16T13:01:58Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 33,
+    "fields": {
+      "name": "Холодильник LG DoorCooling+ GA-B509CMTL",
+      "description": "No Frost:  Полный\r\nПолезный объем:  384 л, (277 л + 107 л)\r\nЗона свежести: Да\r\nЦвет:  Серебристый\r\nТип управления:  Электронное\r\nКласс энергопотребления:  A+",
+      "pict": "image/LG_ga-b509cmtl.jpg",
+      "category": 4,
+      "price": "2349.00",
+      "date_create": "2023-11-17T16:59:21Z",
+      "date_edit": "2023-11-17T16:59:23Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 34,
+    "fields": {
+      "name": "Монитор LG 32GN650-B",
+      "description": "Класс игровой\nДиагональ 32 дюйма\nФактическая диагональ 34.1 дюйма\nСоотношение сторон экрана 16:9\nТип матрицы VA\nТехнология Flicker-free есть\nТип подсветки матрицы LED\nРазрешение 2560*1440\nМакс. кол-во цветов 16.7 млн.\nЯркость 350 кд/м2\nКонтрастность 3000:1",
+      "pict": "image/LG_32gn650b.webp",
+      "category": 14,
+      "price": "935.00",
+      "date_create": "2023-11-26T11:12:10Z",
+      "date_edit": "2023-11-26T11:12:11Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 35,
+    "fields": {
+      "name": "Смартфон Huawei P60 Pro MNA-LX9 Dual SIM 8GB/256GB",
+      "description": "Экран:  6.67 дюйма 1220х2700 пикселей, OLED\r\nПроцессор:  Qualcomm Snapdragon 8+ Gen1 , 8 ядр., 3.2 ГГц\r\nПамять:  ОЗУ 8 ГБ , 256 ГБ\r\nФормат физической SIM-карты:  Nano\r\nРазрешение основного модуля камеры:  48 Мп",
+      "pict": "image/p60-pro-mna-lx9-rococo.jpg",
+      "category": 2,
+      "price": "3299.00",
+      "date_create": "2023-11-26T11:14:20Z",
+      "date_edit": "2023-11-26T11:14:21Z"
+    }
+  }
+]

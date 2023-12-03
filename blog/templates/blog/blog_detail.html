@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load mediapath %}
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">
+        <h6>Номер публикации: {{blog.id}}</h6>
+        <h5>Количество просмотров: {{blog.total_view}}</h5>
+        <h1 class="display-5 fw-bold">{{blog.heading}}</h1>
+        <p class="col-md-8 fs-0">{{blog.text|safe}}</p>
+        <div>
+            {% if blog.pict %}
+            <<img src="{% mediapath object.pict %}" style="max-height:400px">>
+            {% endif %}
+        </div>
+        <p></p>
+        <div class="form-check">
+            {% if blog.published %}
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+            <label class="form-check-label" for="flexCheckChecked">
+                Опубликовано
+            </label>
+            {% else %}
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckUnChecked" disabled>
+            <label class="form-check-label" for="flexCheckChecked">
+                Не опубликовано
+            </label>
+            {% endif %}
+        </div>
+
+        <!--        <button class="btn btn-primary btn-sm" type="button">Опубликовать</button>-->
+    </div>
+</div>
+{% endblock %}
