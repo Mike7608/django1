@@ -24,20 +24,20 @@
                         <div style="height:53px; position: absolute;  top: 467px;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-success" onclick="location.href='{% url 'blog:blog_view' blog.pk %}'">Просмотр
+                                    <button type="button" class="btn btn-sm btn-success" onclick="location.href='{% url 'blog:view' blog.pk %}'">Просмотр
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-warning" onclick="location.href='{% url 'blog:blog_update' blog.pk %}'">
+                                    <button type="button" class="btn btn-sm btn-warning" onclick="location.href='{% url 'blog:update' blog.pk %}'">
                                         Изменить
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="location.href='{% url 'blog:blog_delete' blog.pk %}'">
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="location.href='{% url 'blog:delete' blog.pk %}'">
                                         Удалить
                                     </button>
                                     {% if blog.published %}
-                                    <button type="button" class="btn btn-sm btn-info" onclick="location.href='{% url 'blog:blog_publish' blog.pk %}'">
+                                    <button type="button" class="btn btn-sm btn-info" onclick="location.href='{% url 'blog:publish' blog.pk %}'">
                                         Опубликовано
                                     </button>
                                     {% else %}
-                                    <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='{% url 'blog:blog_publish' blog.pk %}'">
+                                    <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='{% url 'blog:publish' blog.pk %}'">
                                         Не опубликовано
                                     </button>
                                     {% endif %}
@@ -50,7 +50,7 @@
             {% endfor %}
         </div>
         <p></p>
-        <button type="submit" class="btn btn-sm btn-block btn-primary" onclick="location.href='{% url 'blog:blog_create' %}'">
+        <button type="submit" class="btn btn-sm btn-block btn-primary" onclick="location.href='{% url 'blog:create' %}'">
             Добавить публикацию
         </button>
     </div>

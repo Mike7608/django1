@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from pytils.translit import slugify
+from django.utils.text import slugify
 
 from blog.models import Blog
 
@@ -22,31 +22,28 @@ class BlogListView(ListView):
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ("heading", 'text', "pict", 'published')
+    fields = ("heading", 'text', "pict")
     # success_url = reverse_lazy('blog:blog_list')
 
     def form_valid(self, form):
-        if form.is_valid():
-            new_blog = form.save()
-            new_blog.slug = slugify(new_blog.heading)
-            new_blog.save()
+        new_blog = form.save(commit=False)
+        new_blog.slug = slugify(new_blog.heading)
+        new_blog.save()
         return super().form_valid(form)
 
-    def get_success_url(self):
-        # ВОТ ЗДЕСЬ ПРОБЛЕМА!!!!!
-        # НЕ ПЕРЕХОДИТ В ПРОСМОТР
-        return reverse('blog:blog_view', args=[self.kwargs.get('pk')])
+    # def get_success_url(self):
+    #     return reverse('blog:view', args=[self.kwargs.get('pk')])
 
 
 class BlogDeleteView(DeleteView):
     model = Blog
-    success_url = reverse_lazy('blog:blog_list')
+    success_url = reverse_lazy('blog:list')
 
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ("heading", 'text', "pict", 'published')
-    success_url = reverse_lazy('blog:blog_list')
+    fields = ("heading", 'text', "pict")
+    success_url = reverse_lazy('blog:list')
 
 
 def publish(request, pk):
@@ -58,4 +55,4 @@ def publish(request, pk):
         blog_item.published = True
 
     blog_item.save()
-    return redirect(reverse('blog:blog_list'))
+    return redirect(reverse('blog:list'))
