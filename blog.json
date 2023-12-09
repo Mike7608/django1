@@ -1,0 +1,80 @@
+[
+  {
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+      "heading": "Публикация с фото",
+      "slug": "pub1",
+      "text": "Портрет в ч/б стиле",
+      "pict": "image/6039317_xlarge.jpg",
+      "date_create": "2023-12-03T09:37:58Z",
+      "published": true,
+      "total_view": 18
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+      "heading": "Публикация 2",
+      "slug": "pub2",
+      "text": "Содержание публикации 2\r\nРедактирование 17",
+      "pict": "",
+      "date_create": "2023-12-03T09:38:35Z",
+      "published": true,
+      "total_view": 13
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 4,
+    "fields": {
+      "heading": "Публикация 4",
+      "slug": "pub 4",
+      "text": "Содержание публикации 4",
+      "pict": "",
+      "date_create": "2023-12-03T09:53:46Z",
+      "published": true,
+      "total_view": 4
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 10,
+    "fields": {
+      "heading": "Тестовая публикация",
+      "slug": "testovaya-publikatsiya",
+      "text": "Тестовая публикация",
+      "pict": "",
+      "date_create": "2023-12-03T20:42:19.388Z",
+      "published": true,
+      "total_view": 7
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 19,
+    "fields": {
+      "heading": "новый тест",
+      "slug": "",
+      "text": "новой текст",
+      "pict": "",
+      "date_create": "2023-12-04T18:15:05.545Z",
+      "published": true,
+      "total_view": 2
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 20,
+    "fields": {
+      "heading": "название работы",
+      "slug": "",
+      "text": "описание работы",
+      "pict": "",
+      "date_create": "2023-12-04T18:20:46.486Z",
+      "published": false,
+      "total_view": 2
+    }
+  }
+]
