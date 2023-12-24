@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% block content %}
 {% load mediapath %}
+{% load blog_filters %}
 <h2 class="hp-padding">Блог</h2>
 
 <div class="album py-5 bg-body-tertiary">
@@ -14,6 +15,7 @@
 
                         <div style="height: 190px ">
                             <h5 class="card-title">{{blog.heading}}</h5>
+                            <h6 class="card-title">{{blog.pk|actual_version}}</h6>
                             <p class="card-text">{{blog.text}}</p>
                         </div>
                         <div style="height:37px;  position: absolute;  top: 437px;">

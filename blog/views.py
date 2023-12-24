@@ -1,9 +1,11 @@
+from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.utils.text import slugify
 
-from blog.models import Blog
+from blog.forms import BlogForm, VersionForm
+from blog.models import Blog, Version
 
 
 class BlogDetailView(DetailView):
@@ -22,7 +24,8 @@ class BlogListView(ListView):
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ("heading", 'text', "pict")
+    # fields = ("heading", 'text', "pict")
+    form_class = BlogForm
     # success_url = reverse_lazy('blog:blog_list')
 
     def form_valid(self, form):
@@ -42,8 +45,28 @@ class BlogDeleteView(DeleteView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ("heading", 'text', "pict")
-    success_url = reverse_lazy('blog:list')
+    # fields = ("heading", 'text', "pict")
+    form_class = BlogForm
+    # success_url = reverse_lazy('blog:blog_list')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        VersionFormset = inlineformset_factory(Blog, Version, form=VersionForm, extra=1)
+        if self.request.method == 'POST':
+            context_data['formset'] = VersionFormset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = VersionFormset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        formset = self.get_context_data()['formset']
+        self.object = form.save()
+
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+
+        return super().form_valid(form)
 
 
 def publish(request, pk):
@@ -56,3 +79,4 @@ def publish(request, pk):
 
     blog_item.save()
     return redirect(reverse('blog:list'))
+
