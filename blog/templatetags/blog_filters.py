@@ -11,10 +11,10 @@ def actual_version(pk):
     Процедура возвращает актуальную версию
     """
     version = Version.objects.all()
-    ver = 'отсутствует'
+    ver = ''
     for v in version:
         if v.blog.pk == pk:
             if v.sign:
-                ver = v.version
+                ver = f"Актуальная версия: {v.version}"
 
-    return f"Актуальная версия: {ver}"
+    return ver
