@@ -33,9 +33,6 @@ class Version(models.Model):
     def __str__(self):
         return f"{self.blog}, версия: {self.version}, наименование: {self.name}, признак: {self.sign}"
 
-    # def get_absolute_url(self):
-    #     return reverse('blog:view', kwargs={'pk': self.id})
-
     class Meta:
         verbose_name = "Версия"
         verbose_name_plural = "Версии"
