@@ -22,7 +22,6 @@ class BlogListView(ListView):
     model = Blog
 
 
-
 class BlogCreateView(CreateView):
     model = Blog
     form_class = BlogForm

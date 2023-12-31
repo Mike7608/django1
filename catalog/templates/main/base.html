@@ -13490,8 +13490,14 @@ textarea.form-control-lg {
 				</form>
 
 				<div class="text-end">
-					<button type="button" class="btn btn-outline-light me-2">Вход</button>
-					<button type="button" class="btn btn-warning">Регистрация</button>
+					{% if user.is_authenticated %}
+						<button type="button" class="btn btn-outline-light me-2" onclick="location.href='{% url 'users:logout' %}'">Выход</button>
+						<button type="button" class="btn btn-warning" onclick="location.href='{% url 'users:profile' %}'">Профиль</button>
+					{% else %}
+						<button type="button" class="btn btn-outline-light me-2" onclick="location.href='{% url 'users:login' %}'">Вход</button>
+						<button type="button" class="btn btn-warning" onclick="location.href='{% url 'users:register' %}'">Регистрация</button>
+					{% endif %}
+
 				</div>
 			</div>
 		</div>
