@@ -17,7 +17,7 @@ class Blog(models.Model):
         return f"{self.heading}, дата публикации: {self.date_create}, просмотров: {self.total_view}"
 
     def get_absolute_url(self):
-        return reverse('blog:view', kwargs={'pk': self.id})
+        return reverse('blog:view', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = "Публикация"

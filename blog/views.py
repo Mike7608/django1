@@ -60,7 +60,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
 
         if formset.is_valid():
             formset.instance = self.object
-            formset.user = self.request.user
+
             formset.save()
 
         return super().form_valid(form)
