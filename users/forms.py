@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.sites.shortcuts import get_current_site
 
 from users.models import User
 
@@ -38,6 +39,58 @@ class UserForgotPasswordForm(PasswordResetForm):
                 'class': 'form-control',
                 'autocomplete': 'off'
             })
+
+
+class UserForgotPasswordNewGenForm(PasswordResetForm):
+    """
+    Запрос на восстановление пароля
+    """
+
+    def __init__(self, *args, **kwargs):
+        """
+        Обновление стилей формы
+        """
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': 'off'
+            })
+
+    def save(
+        self,
+        from_email=None,
+        request=None,
+        html_email_template_name=None,
+        *args, **kwargs
+    ):
+        email = self.cleaned_data['email']
+
+        current_site = get_current_site(request)
+        site_name = current_site.name
+        domain = current_site.domain
+
+        for user in self.get_users(email):
+            new_password = User.objects.make_random_password()
+            user.set_password(new_password)
+            user.save()
+
+            context = {
+                "email": user.email,
+                "domain": domain,
+                "site_name": site_name,
+                "user": user,
+                "new_password": new_password
+            }
+
+            self.send_mail(
+                context=context,
+                from_email=from_email,
+                to_email=user.email,
+                subject_template_name='users/password_new_gen_message_mail.txt',
+                email_template_name='users/password_reset_new_gen.html',
+                html_email_template_name=html_email_template_name,
+            )
 
 
 class UserSetNewPasswordForm(SetPasswordForm):
