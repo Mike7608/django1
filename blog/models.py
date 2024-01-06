@@ -1,17 +1,17 @@
 from django.db import models
 from django.urls import reverse
-
-NULLABLE = {'null': True, 'blank': True}
+from users.models import User
 
 
 class Blog(models.Model):
     heading = models.CharField(max_length=150, verbose_name='Заголовок')
     slug = models.CharField(max_length=250, verbose_name='slug')
     text = models.TextField(verbose_name='Содержание')
-    pict = models.ImageField(upload_to='image/', verbose_name='Изображение', **NULLABLE)
+    pict = models.ImageField(upload_to='image/', verbose_name='Изображение', blank=True, null=True)
     date_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     published = models.BooleanField(default=True, verbose_name='Признак публикации')
     total_view = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='автор')
 
     def __str__(self):
         return f"{self.heading}, дата публикации: {self.date_create}, просмотров: {self.total_view}"

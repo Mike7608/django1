@@ -31,6 +31,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         new_blog = form.save(commit=False)
         new_blog.slug = slugify(new_blog.heading)
+        new_blog.user = self.request.user
         new_blog.save()
         return super().form_valid(form)
 
@@ -59,6 +60,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
 
         if formset.is_valid():
             formset.instance = self.object
+            formset.user = self.request.user
             formset.save()
 
         return super().form_valid(form)

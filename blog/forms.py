@@ -16,9 +16,10 @@ class StyleFormMixin:
 
 
 class BlogForm(StyleFormMixin, forms.ModelForm):
+
     class Meta:
         model = Blog
-        exclude = ('slug', 'total_view')
+        exclude = ('slug', 'total_view', 'user')
 
     def clean_heading(self):
         """
