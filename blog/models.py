@@ -20,6 +20,12 @@ class Blog(models.Model):
         return reverse('blog:view', kwargs={'pk': self.pk})
 
     class Meta:
+        permissions = [
+            (
+                "set_published_status",
+                "Can publish post"
+            )
+        ]
         verbose_name = "Публикация"
         verbose_name_plural = "Публикации"
 

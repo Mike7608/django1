@@ -1,5 +1,5 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -10,8 +10,9 @@ from blog.forms import BlogForm, VersionForm
 from blog.models import Blog, Version
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog
+
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -24,9 +25,10 @@ class BlogListView(ListView):
     model = Blog
 
 
-class BlogCreateView(LoginRequiredMixin, CreateView):
+class BlogCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Blog
     form_class = BlogForm
+    permission_required = 'blog.add_blog'
 
     def form_valid(self, form):
         new_blog = form.save(commit=False)
@@ -36,13 +38,15 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class BlogDeleteView(LoginRequiredMixin, DeleteView):
+class BlogDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Blog
+    permission_required = 'blog.delete_blog'
     success_url = reverse_lazy('blog:list')
 
 
-class BlogUpdateView(LoginRequiredMixin, UpdateView):
+class BlogUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Blog
+    permission_required = 'blog.change_blog'
     form_class = BlogForm
 
     def get_context_data(self, **kwargs):
@@ -67,6 +71,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
 
 
 @login_required
+@permission_required('blog.change_blog')
 def publish(request, pk):
     blog_item = get_object_or_404(Blog, pk=pk)
 
@@ -77,4 +82,13 @@ def publish(request, pk):
 
     blog_item.save()
     return redirect(reverse('blog:list'))
+
+
+@login_required
+@permission_required('blog.change_blog')
+def is_creator(request, pk):
+    blog_item = get_object_or_404(Blog, pk=pk)
+
+    print(blog_item.user.pk)
+    print(request.user.pk)
 
