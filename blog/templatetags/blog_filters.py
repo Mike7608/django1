@@ -1,5 +1,6 @@
-from django import template
+from profile import Profile
 
+from django import template
 from blog.models import Version
 
 register = template.Library()
@@ -18,3 +19,16 @@ def actual_version(pk):
                 ver = f"Актуальная версия: {v.version}"
 
     return ver
+
+
+@register.filter()
+def show_button(creator, user):
+    """
+    Процедуоа сравнивает создателя записи блога с активным пользователем
+    если они идентичны, возвращает True
+    P.S. Можно использовать для отключения кнопок на форме
+    """
+    if str(creator).lower() == str(user.user.email).lower():
+        return True
+    else:
+        return False

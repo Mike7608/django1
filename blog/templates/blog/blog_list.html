@@ -30,7 +30,7 @@
                                     <button type="button" class="btn btn-sm btn-success"
                                             onclick="location.href='{% url 'blog:view' blog.pk %}'">Просмотр
                                     </button>
-                                    {% if perms.blog.change_blog %}
+                                    {% if blog.user|show_button:perms.blog %}
                                     <button type="button" class="btn btn-sm btn-warning"
                                             onclick="location.href='{% url 'blog:update' blog.pk %}'">
                                         Изменить

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.utils.text import slugify
@@ -12,7 +12,6 @@ from blog.models import Blog, Version
 
 class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog
-
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -82,13 +81,3 @@ def publish(request, pk):
 
     blog_item.save()
     return redirect(reverse('blog:list'))
-
-
-@login_required
-@permission_required('blog.change_blog')
-def is_creator(request, pk):
-    blog_item = get_object_or_404(Blog, pk=pk)
-
-    print(blog_item.user.pk)
-    print(request.user.pk)
-
