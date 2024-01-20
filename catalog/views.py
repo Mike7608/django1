@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
+from catalog import services
 from catalog.models import Product
 
 
